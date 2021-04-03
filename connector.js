@@ -19,7 +19,6 @@ setUserNav();
 function logout(){
     apiLogout();
     setUserNav();
-    console.log("why you no refresh?")
     page.redirect("/")
 }
 
@@ -39,8 +38,7 @@ page.start();
 function setUserNav(){
     
     let userIsLogged=sessionStorage.getItem("userId")
-    console.log(userIsLogged)
-    let nav=document.querySelector("nav");
+      let nav=document.querySelector("nav");
     let guestLinks=document.getElementById("guest")
     let logedUserLinks=document.getElementById("loggedUser")
 

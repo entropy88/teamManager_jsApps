@@ -8,38 +8,20 @@ function browseTemplate(teams){
         <h1>Team Browser</h1>
     </article>
 
-    <article class="layout narrow">
+    ${sessionStorage.getItem("userId")!=null?html`<article class="layout narrow">
         <div class="pad-small"><a href="/create" class="action cta">Create Team</a></div>
     </article>
+`:""}
 
     ${teams.map(teamTemplate)}
 
-    <!-- <article class="layout">
-        <img src="./assets/rocket.png" class="team-logo left-col">
-        <div class="tm-preview">
-            <h2>Team Rocket</h2>
-            <p>Gotta catch 'em all!</p>
-            <span class="details">3 Members</span>
-            <div><a href="#" class="action">See details</a></div>
-        </div>
-    </article>
 
-    <article class="layout">
-        <img src="./assets/hydrant.png" class="team-logo left-col">
-        <div class="tm-preview">
-            <h2>Minions</h2>
-            <p>Friendly neighbourhood jelly beans, helping evil-doers succeed.</p>
-            <span class="details">150 Members</span>
-            <div><a href="#" class="action">See details</a></div>
-        </div>
-    </article> -->
 
 </section>`
 }
 
 export async function browse(ctx){
     let teams=await getAllTeams();
-    console.log(teams)
     ctx.render(browseTemplate(teams))
 }
 
